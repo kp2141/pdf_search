@@ -1,4 +1,4 @@
-# pdf_search
+# Document_search
 Technology used: Python,Elasticsearch Engine, Flask, Apache Tika - a content analysis toolkit
 
 What Program does?: 
