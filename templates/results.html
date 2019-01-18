@@ -65,18 +65,22 @@
       <tr>
         <th>Index Name</th>
         <th>Total Document</th>
+          <th>action</th>
       </tr>
     </thead>
 
-    <tbody>
-      <tr>
-          {% if res['hits']['total'] != 0 %}
-             <td>{{res['hits']['hits'][0]['_index']}}</td>
+    {% for i in range(1,matrix_length) %}
+    <tbody id="table">
+      <tr class="tr">
+          <td>{{matrix_list[i][2]}}</td>
+          <td>{{matrix_list[i][6]}}</td>
+            <!--form action="/delete_index?name={{matrix_list[i][2]}}" method="GET"-->
+          <td class="delete"><a class="delete" href="/delete_index?name={{matrix_list[i][2]}}"><input class="btn btn-primary btn-lg " type="submit" value="Delete"></a></td>
 
-            <td>{{total_doc}}</td>
-          {% endif %}
+
       </tr>
     </tbody>
+        {% endfor %}
   </table>
 
       <form action="{{url_for('home')}}" >
@@ -90,5 +94,16 @@
 
       </div>
     </div>
+
+  <script>
+      const list = document.querySelector('#table tr');
+      list.addEventListener('click',function(e){
+        if(e.target.className == 'delete'){
+        const td = e.target.parentElement;
+        list.removeChild(tr);
+        }
+      });
+
+  </script>
   </body>
 </html>
