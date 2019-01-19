@@ -41,3 +41,8 @@ def create_index(index_name):
         pdf_parser(i,index_name)
         count+=1
         print(count)
+
+glob_index=''
+
+def fetch_index(index_name):
+    glob_index= index_name

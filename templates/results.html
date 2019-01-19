@@ -44,6 +44,7 @@
         <th>Creation Date</th>
         <th>Title</th>
         <th>Author</th>
+        <th>index-name</th>
       </tr>
     </thead>
 
@@ -54,34 +55,14 @@
 
          <td>{{ hit['_source']['title'] }}</a></td>
         <td>{{ hit['_source']['author'] }}</td>
+        <td>{{hit['_index']}}</td>
       </tr>
     </tbody>
 {% endfor %}
   </table>
 <br>
     <br>
-    <table class="table">
-    <thead>
-      <tr>
-        <th>Index Name</th>
-        <th>Total Document</th>
-          <th>action</th>
-      </tr>
-    </thead>
 
-    {% for i in range(1,matrix_length) %}
-    <tbody id="table">
-      <tr class="tr">
-          <td>{{matrix_list[i][2]}}</td>
-          <td>{{matrix_list[i][6]}}</td>
-            <!--form action="/delete_index?name={{matrix_list[i][2]}}" method="GET"-->
-          <td class="delete"><a class="delete" href="/delete_index?name={{matrix_list[i][2]}}"><input class="btn btn-primary btn-lg " type="submit" value="Delete"></a></td>
-
-
-      </tr>
-    </tbody>
-        {% endfor %}
-  </table>
 
       <form action="{{url_for('home')}}" >
       <div class="input-group">
@@ -95,15 +76,6 @@
       </div>
     </div>
 
-  <script>
-      const list = document.querySelector('#table tr');
-      list.addEventListener('click',function(e){
-        if(e.target.className == 'delete'){
-        const td = e.target.parentElement;
-        list.removeChild(tr);
-        }
-      });
-
-  </script>
+  
   </body>
 </html>
